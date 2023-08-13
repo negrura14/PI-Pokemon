@@ -4,7 +4,7 @@ import SearchBar from "../SearchBar/SearchBar.jsx";
 import './NavBar.css'
 import { Link } from "react-router-dom";
 import { ROUTES } from '../../helpers/RoutesPath.js';
-export default function({allTypes, handleSort, handleOrderByAttack, handleOrigin, handleFilterByType, handleClick}){
+export default function({allTypes, handleSort, handleOrderByAttack, handleOrigin, handleFilterByType}){
     return(
 
         <nav>

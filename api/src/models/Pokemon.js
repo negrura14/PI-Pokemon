@@ -11,12 +11,12 @@ module.exports = (sequelize) => {
       allowNull: false,
       primaryKey: true
     },
-    img:{
-      type: DataTypes.STRING,
-    },
     name: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    img:{
+      type: DataTypes.STRING,
     },
     hp:{
       type: DataTypes.INTEGER,

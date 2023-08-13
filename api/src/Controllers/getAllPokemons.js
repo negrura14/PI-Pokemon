@@ -1,6 +1,6 @@
 const getApiPokemons = require('./getApiPokemons');
 const getDbPokemonInfo = require('./getPokemonDb');
-
+//*Obtengo todos los pokemons de la API + la DB
 // const getAllPokemons = async()=>{
 //     const [apiPokemonInfo, dbPokemonsInfo] = await Promise.all([getApiPokemons(), getDbPokemonInfo()]); 
 

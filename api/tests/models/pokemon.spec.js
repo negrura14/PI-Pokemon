@@ -1,5 +1,5 @@
 const { Pokemon, conn } = require('../../src/db.js');
-const { expect } = require('chai');
+const { before } = require('jest');
 
 describe('Pokemon model', () => {
   before(() => conn.authenticate()
@@ -19,4 +19,6 @@ describe('Pokemon model', () => {
       });
     });
   });
+
 });
+

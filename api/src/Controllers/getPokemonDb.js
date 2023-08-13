@@ -1,5 +1,6 @@
-const {Pokemon, Type} = require('../../db');
+const {Pokemon, Type} = require('../db');
 
+//*Obtengo todos los pokemons que se encuentren en la BD
 const getDbPokemonInfo = async()=>{
     const dbPokemons = await Pokemon.findAll({
         include: {

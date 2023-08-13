@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
-const { expect } = require('chai');
-const session = require('supertest-session');
+const { before, describe, it } = require('@jest/globals');
+const session = require('supertest');
 const app = require('../../src/app.js');
 const { Pokemon, conn } = require('../../src/db.js');
 

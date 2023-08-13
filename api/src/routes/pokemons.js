@@ -1,7 +1,8 @@
 const router = require('express').Router();
-const {getAllPokemons} = require("./Models/getAllPokemons");
+const {getAllPokemons} = require("../Controllers/getAllPokemons");
 const { Pokemon, Type } = require("../db");
 
+//*Definimos las rutas GET - POST - DELETE de los pokemon
 
 router.get('', async (req, res)=>{
     const {name} = req.query; 
@@ -21,18 +22,35 @@ router.get('', async (req, res)=>{
     }
 });
 
+
+
 router.get('/:id', async (req, res) => {
-    const {id} = req.params;
+    const { id } = req.params;
     const totalPokemons = await getAllPokemons();
-    if(id){
-        const pokemonId = await totalPokemons.filter(pokeId => pokeId.id == id);
-        if(pokemonId.length){
-            try{
-                return res.status(200).send(pokemonId)
-            } catch(error){
-                res.send(error)
-            }
+    const pokemonId = totalPokemons.find(pokeId => pokeId.id == id);
+    if (pokemonId) {
+      try {
+        return res.status(200).send([pokemonId]);
+      } catch (error) {
+        res.send(error);
+      }
+    } else {
+      return res.send({ error: 'Pokemon not found' });
+    }
+  });
+  
+  router.get('/pokemon/:name', async (req, res) => {
+    const { name } = req.params;
+    const allPokemons = await getAllPoke();
+    try {
+        if (name) {
+            const pokemonName = await allPokemons.filter(e => e.name == name);
+            pokemonName.length ?
+                res.status(200).json(pokemonName) :
+                res.status(404).send('Pokemon no encontrado')
         }
+    } catch (error) {
+        console.log(error);
     }
 })
 

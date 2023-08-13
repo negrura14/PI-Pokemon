@@ -71,3 +71,25 @@
     cursor:pointer ;
     padding: 5px 12px ;
 }
+
+.about_button{
+    margin-left: 1vw;
+    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+    font-family: 'Poppins', sans-serif;  
+    border-radius:10px ;
+    background-color:#F7F7F7 ;
+    border:none ;
+    padding:4px 6px;
+    color:#474747 ;
+    letter-spacing: 2px;
+}
+
+.about_button:hover{
+    color: white;
+    background-color: #474747;
+    box-shadow: 0 0 20px #F7F7F7, 0 0 40px #F7F7F7, 0 0 80px #F7F7F7;
+    transition:0.8s;
+    border: none;
+    cursor:pointer ;
+    padding: 5px 12px ;
+}

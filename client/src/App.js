@@ -7,6 +7,7 @@ import Home from './Components/Home/Home';
 import CreatePokemon from './Components/CreatePokemon/CreatePokemon';
 import Detail from './Components/Detail/Detail';
 import NotFoundPage from './Components/NotFound/NotFoundPage'
+import About from './Components/About/About';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Route exact path={ROUTES.HOME}  element={<Home/>}/>
       <Route exact path={ROUTES.CREATE}  element={<CreatePokemon/>}/>
       <Route exact path={ROUTES.DETAIL}  element={<Detail/>}/>
+      <Route exact path={ROUTES.ABOUT}  element={<About/>}/>
       <Route path={ROUTES.ERROR} element={<NotFoundPage/>}/>
       </Routes>
     </div>

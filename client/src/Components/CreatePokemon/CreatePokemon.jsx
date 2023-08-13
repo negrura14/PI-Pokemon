@@ -87,12 +87,22 @@ export default function CreatePokemon() {
         setError(objError)
     }
 
-    useEffect(() =>{
-        if(input.type.length === 0){
-            setError({...error, required: true, type: 'Please choose at least one type'})
-
+    useEffect(() => {
+        if (input.type.length === 0) {
+            setError(prevError => ({
+                ...prevError,
+                required: true,
+                type: 'Please choose at least one type'
+            }));
         }
-    }, [input.type, error.required])
+    }, [input.type]);
+
+    // useEffect(() =>{
+    //     if(input.type.length === 0){
+    //         setError({...error, required: true, type: 'Please choose at least one type'})
+
+    //     }
+    // }, [input.type, error.required])
 
     function handleSubmit(e){
         if(error.required){

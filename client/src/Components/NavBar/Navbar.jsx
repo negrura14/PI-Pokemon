@@ -3,7 +3,7 @@ import React from "react";
 import SearchBar from "../SearchBar/SearchBar.jsx";
 import './NavBar.css'
 import { Link } from "react-router-dom";
-
+import { ROUTES } from '../../helpers/RoutesPath.js';
 export default function({allTypes, handleSort, handleOrderByAttack, handleOrigin, handleFilterByType, handleClick}){
     return(
 
@@ -47,7 +47,8 @@ export default function({allTypes, handleSort, handleOrderByAttack, handleOrigin
                 </div>
 
                 <div>
-                    <Link to='/CreatePokemon'><button className="navbar_button">Create Pokemon</button></Link>
+                    <Link to={ROUTES.CREATE}><button className="navbar_button">Create Pokemon</button></Link>
+                    <Link to={ROUTES.ABOUT}><button className="about_button">About</button></Link>
                 </div>
            
             </div>

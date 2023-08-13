@@ -1,4 +1,4 @@
-/* eslint-disable array-callback-return */
+
 
 const initialState = {
     loading: false,
@@ -22,6 +22,7 @@ function reducer (state = initialState, {type, payload}) {
             if(payload === 'clear'){
                 return {...state, details: []}
             }   return{...state, details: payload, loading: false}
+            
         case 'filterByTypes':
             const allTypes = state.allPokemons
             const typesFilter = payload === 'all' ? allTypes : allTypes.filter(pokemon => {

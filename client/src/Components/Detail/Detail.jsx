@@ -17,7 +17,7 @@ export default function Detail() {
         return(function cleanUp(){
             dispatch(getPokemonsById('clear'))
         }) 
-    },[dispatch]);
+    },[dispatch, id]);
 
     function handleDelete(){
         dispatch(deletePokemon(id));
@@ -26,6 +26,7 @@ export default function Detail() {
 
     return(
         <div>
+            
             { pokemon.length > 0 ? 
                 <div className={Styles.container}>
                     <div className={Styles.details_container}>

@@ -29,7 +29,7 @@
 .btn{
     
     position: absolute;
-    top: 70%;
+    top: 80%;
     left: 46%;
     margin-top: 0.5em;
     text-decoration: none;
@@ -88,6 +88,9 @@
 }
 
 .h2 {
+    position: absolute;
+    top: 67%;
+    left: 45%;
     font-size: 2vw;
     font-weight: bold;
     color: rgba(219, 2, 2, 0.885);

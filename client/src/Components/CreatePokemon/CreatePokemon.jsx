@@ -213,7 +213,7 @@ export default function CreatePokemon() {
                 <button className={Styles.create_button} type="submit">Create Pokemon!</button>
 
             </form>
-            <Link to='/Home'><button className={Styles.my_button}>Back to Home</button></Link>
+            <Link to={ROUTES.HOME}><button className={Styles.my_button}>Back to Home</button></Link>
         </div>
     )
 }

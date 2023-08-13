@@ -23,16 +23,26 @@ function reducer (state = initialState, {type, payload}) {
                 return {...state, details: []}
             }   return{...state, details: payload, loading: false}
             
+       
+
         case 'filterByTypes':
-            const allTypes = state.allPokemons
+            const allTypes = state.allPokemons;
             const typesFilter = payload === 'all' ? allTypes : allTypes.filter(pokemon => {
-                for(let type of pokemon.type){
-                    if(payload === type){
-                        return pokemon
-                    } 
+            for (let type of pokemon.type) {
+                  if (payload === type) {
+                   return true;  // Devuelve true si el tipo coincide
                 }
-            });
-            return{...state, copyPokemons: typesFilter}
+            }
+             return false;  // Devuelve false si no se encontró ningún tipo coincidente
+         });
+
+    if (typesFilter.length === 0) {
+        alert('No se encontró ningún Pokémon con este tipo'); // Muestra una alerta
+    }
+    
+    return { ...state, copyPokemons: typesFilter };
+
+
         case 'filterByOrigin':
             const allPokemonsArray = state.allPokemons;
             const filterOrigin = payload === 'createdInDb' ? allPokemonsArray.filter(pokemon => pokemon.createdInDb) : allPokemonsArray.filter(pokemon=> !pokemon.createdInDb)

@@ -2,8 +2,10 @@ const router = require('express').Router();
 const {getAllPokemons} = require("../Controllers/getAllPokemons");
 const { Pokemon, Type } = require("../db");
 
-//*Definimos las rutas GET - POST - DELETE de los pokemon
+//* Maneja las rutas GET, POST y DELETE para los Pokémon.
 
+
+//* Ruta para obtener todos los Pokémon o buscar por nombre
 router.get('', async (req, res)=>{
     const {name} = req.query; 
     const totalPokemons = await getAllPokemons();
@@ -24,6 +26,7 @@ router.get('', async (req, res)=>{
 
 
 
+//* Ruta para obtener un Pokémon por su ID
 router.get('/:id', async (req, res) => {
     const { id } = req.params;
     const totalPokemons = await getAllPokemons();
@@ -38,7 +41,9 @@ router.get('/:id', async (req, res) => {
       return res.send({ error: 'Pokemon not found' });
     }
   });
-  
+
+
+  //* Ruta para obtener un Pokémon por su nombre
   router.get('/pokemon/:name', async (req, res) => {
     const { name } = req.params;
     const allPokemons = await getAllPoke();
@@ -54,6 +59,7 @@ router.get('/:id', async (req, res) => {
     }
 })
 
+//* Ruta para crear un nuevo Pokémon
 router.post('', async (req, res)=>{
     const {
         img, name, type, id, hp, attack, defense, speed, weight, height, createdInDb
@@ -79,6 +85,7 @@ router.post('', async (req, res)=>{
 })
 
 
+//* Ruta para eliminar un Pokémon por su ID
 router.delete('/:id', async (req, res)=>{
     try{
        const {id} = req.params;

@@ -2,7 +2,10 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import Styles from './Card.module.css';
 
-export default function Card({id, name, type, img}){
+
+//* Componente funcional para representar una tarjeta de Pokémon.
+
+export default function Card({id, name, type, img}) {
     let key = 1;
     return (
         <Link className={Styles.linkCard} to={`/Home/${id}`}>

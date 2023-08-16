@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+//*Obtiene todos los Pokémon desde la API
+
 export function getAllPokemons() {
     return async function(dispatch){
         dispatch({type: 'Loading'})
@@ -11,6 +13,9 @@ export function getAllPokemons() {
     }
 };
 
+
+//*Obtiene todos los tipos de Pokémon desde la API
+
 export function getAllTypes() { 
     return async function (dispatch) {
         let json = await axios.get('http://localhost:3001/types')
@@ -20,6 +25,9 @@ export function getAllTypes() {
         })
     }
 };
+
+
+//*Busca Pokémon por su nombre
 
 export function getPokemonsByName(name) {
     return async function(dispatch){
@@ -42,6 +50,9 @@ export function getPokemonsByName(name) {
           }
     }
 };
+
+
+//* Busca Pokémon por su ID
 
 export function getPokemonsById(id) {
     return async function(dispatch){
@@ -78,12 +89,17 @@ export function getPokemonsById(id) {
     }
 };
 
+
+//*Crea una acción para filtrar los Pokémon por tipos
+
 export function filterByTypes(payload){
     return{
         type: 'filterByTypes',
         payload
     }
 };
+
+//*Crea una acción para filtrar los Pokémon por origen
 
 export function filterByOrigin(payload){
     return {
@@ -92,6 +108,9 @@ export function filterByOrigin(payload){
     }
 };
 
+
+//* Crea una acción para ordenar los Pokémon por nombre
+
 export function orderByName(payload){
     return{
         type: 'orderByName',
@@ -99,12 +118,17 @@ export function orderByName(payload){
     }
 };
 
+
+//* Crea una acción para ordenar los Pokémon por ataque
+
 export function orderByAttack(payload){
     return{
         type: 'orderByAttack',
         payload
     }
 };
+
+//* Crea una acción para agregar un nuevo Pokémon a la base de datos
 
 export function postPokemon(payload){
     return async function(dispatch){
@@ -115,6 +139,9 @@ export function postPokemon(payload){
         })
     }
 };
+
+
+//*Crea una acción para eliminar un Pokémon de la base de datos
 
 export function deletePokemon(id){
     return async function(dispatch){

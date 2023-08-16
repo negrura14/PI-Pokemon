@@ -3,6 +3,10 @@ import styles from './About.module.css';
 import { ROUTES } from '../../helpers/RoutesPath';
 import { Link } from 'react-router-dom';
 
+
+//* Componente funcional para la página "Acerca de" del proyecto Pokémon.
+//* Muestra información sobre el proyecto y el creador, además de enlaces a las redes sociales del creador.
+
 const About = () => {
     return(
         <div className={styles.container}>

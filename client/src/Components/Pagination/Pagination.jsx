@@ -2,9 +2,14 @@ import React , {useState} from "react";
 import styled from "styled-components";
 
 
+ //* Componente funcional que muestra una paginación para la lista de pokémons.
+ 
+
 export default function Pagination({page, setPage, pokemonsPerPage}){
 
     const StyledButtonsPag = styled.button`
+    //* Estilos del contenedor de la paginación 
+
         border-radius: 50% ;
         background-color: none;
         font-size:30px;
@@ -25,6 +30,8 @@ export default function Pagination({page, setPage, pokemonsPerPage}){
     `
 
     const DivStylePag = styled.div`
+    //* Estilos del contenedor de la paginación
+
         display:flex ;
         align-items:center ;
         position:relative ;
@@ -35,6 +42,8 @@ export default function Pagination({page, setPage, pokemonsPerPage}){
     `
 
     const InputPaginationPag = styled.input`
+    //* Estilos del input de la paginación
+
     background: none;
     border: none;
     border-radius: 10px;
@@ -48,10 +57,14 @@ export default function Pagination({page, setPage, pokemonsPerPage}){
 
     const [input, setInput] = useState(1)
 
+    //* Función que avanza a la siguiente página
+
     function nextPage(){
         setInput (input + 1)
         setPage (page + 1);
     }
+
+    //* Función que retrocede a la página anterior
     
     function previousPage(){
         setInput (input - 1)
@@ -61,9 +74,20 @@ export default function Pagination({page, setPage, pokemonsPerPage}){
 
     return(
        <DivStylePag>
+
+        //* Botón para retroceder a la página anterior
+
             <StyledButtonsPag disabled={page === 1 || page < 1} onClick={previousPage}>⇠</StyledButtonsPag>
+
+            //* Input para mostrar el número de página actual
+
             <InputPaginationPag name='page' autoComplete="off" type="text" value={input}/>
+
+            //* Texto para mostrar el rango de páginas
             <p>de {pokemonsPerPage}</p>
+
+            //* Botón para avanzar a la siguiente página
+            
             <StyledButtonsPag disabled={page === 100 || page > 100} onClick={nextPage}>⇢</StyledButtonsPag>
         </DivStylePag>
     )

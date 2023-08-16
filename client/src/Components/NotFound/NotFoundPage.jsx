@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom';
 import {ROUTES} from '../../helpers/RoutesPath'
 
 
-
+//* Componente funcional que muestra una página de error 404 (no encontrado).
+ 
 export default function NotFoundPage(){
     return(
         <div className={styles.container}>

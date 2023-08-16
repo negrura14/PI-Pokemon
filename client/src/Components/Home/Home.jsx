@@ -17,7 +17,9 @@ import {
 } from "../../Actions/index";
 import NotFoundPage from "../NotFound/NotFoundPage";
 
-
+//* Componente funcional para la página de inicio que muestra la lista de Pokémon.
+//* Carga la lista de Pokémon, tipos y realiza filtrados y ordenamientos según las acciones de los usuarios.
+ 
 function Home() {
     
     const dispatch = useDispatch();
@@ -25,7 +27,7 @@ function Home() {
     const loading =  useSelector(state => state.loading);
     const copyPokemons =  useSelector(state => state.copyPokemons);
 
-    //paginado
+    //* paginacion
     const [page, setPage] = useState(1);
     const [perPage, setPerPage] = useState(12)
 
@@ -35,6 +37,7 @@ function Home() {
     
     
     useEffect(()=>{
+        //* Carga la lista de Pokémon y tipos al montar el componente
         dispatch(getAllPokemons())
         dispatch(getAllTypes())
     },[dispatch]);
@@ -42,28 +45,33 @@ function Home() {
     
     const [order, setOrder] = useState('') 
     
+    //* Maneja el ordenamiento por nombre de los Pokémon
     function handleSort(event){
         event.preventDefault();
         dispatch(orderByName(event.target.value));
         setOrder(`ordered ${event.target.value}`)
     }
 
+    //* Maneja el ordenamiento por ataque de los Pokémon
     function handleOrderByAttack(event){
         event.preventDefault();
         dispatch(orderByAttack(event.target.value));
         setOrder(`ordered ${event.target.value}`)
     }
 
+    //* Maneja el filtro por origen de los Pokémon
     function handleOrigin(event){
         event.preventDefault()
         dispatch(filterByOrigin(event.target.value))
     }
 
+    //* Maneja el filtro por tipo de los Pokémon
     function handleFilterByType(event){
         event.preventDefault()
         dispatch(filterByTypes(event.target.value))
     }
-    //* Esta funcion permite hacer un evento de la prevencion de default que despacha un GET con todos los pokemons
+
+    //* Maneja el evento de clic para cargar todos los Pokémon nuevamente
     function handleClick(event){
         event.preventDefault();
         dispatch(getAllPokemons())
@@ -72,6 +80,8 @@ function Home() {
     if(loading){
         return (    
         <div className={Styles.home_container}> 
+
+        //*Renderizar la barra de navegación y la página de carga
             <div>
                 <Navbar
                     allTypes={allTypes}
@@ -92,6 +102,8 @@ function Home() {
 } else {
     return(
         <div className={Styles.home_container}> 
+
+        //* Renderizar la barra de navegación y la lista de Pokémon
             <div>
                 <Navbar
                     allTypes={allTypes}

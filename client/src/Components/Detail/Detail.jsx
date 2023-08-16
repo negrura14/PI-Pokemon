@@ -6,6 +6,10 @@ import LoadingPage from '../LoadingPage/LoadingPage';
 import Styles from './Detail.module.css';
 import {ROUTES} from '../../helpers/RoutesPath'
 
+
+//* Componente funcional para mostrar los detalles de un Pokémon específico.
+//* Carga los detalles del Pokémon mediante la solicitud de Redux y permite eliminar el Pokémon si es una creación local.
+
 export default function Detail() {
     const {id} = useParams();
     const dispatch = useDispatch();
@@ -13,12 +17,18 @@ export default function Detail() {
     const pokemon = useSelector((state) => state.details);
   
     useEffect(()=>{
+
+        //* Carga los detalles del Pokémon por ID al montar el componente
         dispatch(getPokemonsById(id))
+
+        //* Limpia los detalles del Pokémon al desmontar el componente
         return(function cleanUp(){
             dispatch(getPokemonsById('clear'))
         }) 
     },[dispatch, id]);
 
+
+    //* Maneja la eliminación del Pokémon y redirige al usuario a la página de inicio
     function handleDelete(){
         dispatch(deletePokemon(id));
         navigate(ROUTES.HOME)
@@ -46,7 +56,7 @@ export default function Detail() {
                             {typeof pokemon[0].id === 'string' && (
                                 <button className={Styles.delete} onClick={handleDelete}>Delete Pokemon</button>
                             )}
-                            <Link to='/Home'><button className={Styles.my_button}>Back to Home</button></Link>
+                            <Link to={ROUTES.HOME}><button className={Styles.my_button}>Back to Home</button></Link>
                         </div>
                     </div>
                 </div>

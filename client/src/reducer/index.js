@@ -9,6 +9,9 @@ const initialState = {
     pokeDetails: [],
 }
 
+
+//*  Función reducer que gestiona los cambios de estado en la aplicación.
+ 
 function reducer (state = initialState, {type, payload}) {
     // eslint-disable-next-line default-case
     switch(type){
@@ -30,14 +33,14 @@ function reducer (state = initialState, {type, payload}) {
             const typesFilter = payload === 'all' ? allTypes : allTypes.filter(pokemon => {
             for (let type of pokemon.type) {
                   if (payload === type) {
-                   return true;  // Devuelve true si el tipo coincide
+                   return true;  //* Devuelve true si el tipo coincide
                 }
             }
-             return false;  // Devuelve false si no se encontró ningún tipo coincidente
+             return false;  //* Devuelve false si no se encontró ningún tipo coincidente
          });
 
     if (typesFilter.length === 0) {
-        alert('No se encontró ningún Pokémon con este tipo'); // Muestra una alerta
+        alert('No se encontró ningún Pokémon con este tipo'); //* Muestra una alerta
     }
     
     return { ...state, copyPokemons: typesFilter };

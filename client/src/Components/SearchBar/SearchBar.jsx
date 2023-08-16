@@ -3,6 +3,9 @@ import { useDispatch } from "react-redux";
 import { getPokemonsByName } from "../../Actions";
 import './SearchBar.css';
 
+
+//* Componente funcional que muestra un campo de búsqueda de pokémons por nombre.
+ 
 export default function SearchBar(){
 
 
@@ -10,6 +13,8 @@ export default function SearchBar(){
     const [state, setState] = useState('');
     
 
+    //* Función que se ejecuta cuando el valor del campo de búsqueda cambia.
+     
     function handleChange(event){
         event.preventDefault()
         setState(event.target.value)
@@ -19,6 +24,9 @@ export default function SearchBar(){
         
     };
 
+
+    //* Función que se ejecuta cuando se envía el formulario de búsqueda.
+     
     function handleSubmit(event){
         event.preventDefault();
         dispatch(getPokemonsByName(state))

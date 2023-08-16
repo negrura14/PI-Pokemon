@@ -5,6 +5,8 @@ import {postPokemon, getAllTypes } from '../../Actions/index';
 import {useDispatch, useSelector } from 'react-redux';
 import {ROUTES} from '../../helpers/RoutesPath'
 
+//* Componente funcional para la creación de un nuevo Pokémon.
+//* Muestra un formulario para ingresar información sobre un nuevo Pokémon y validar los datos ingresados
 
 export default function CreatePokemon() {
     
@@ -52,10 +54,14 @@ export default function CreatePokemon() {
         return error;
     } 
 
+    //* Obtiene la función de navegación del enrutador
     const navigate = useNavigate();
+
+    //* Obtiene la función `dispatch` del almacén Redux y el estado de los tipos de Pokémon
     const dispatch = useDispatch();
     const types = useSelector((state) => state.types)
 
+    //* Estado local para controlar los datos del formulario y los errores de validación
     const [error, setError ] = useState({required: true});
 
     const [input, setInput ] = useState({
@@ -70,22 +76,35 @@ export default function CreatePokemon() {
         height:0
     });
 
+    //* Función para manejar el cambio de los campos de entrada en el formulario.
+   //* Actualiza el estado `input` con los nuevos valores y realiza validación.
+ 
     function handleChange(e) {
         setInput({
             ...input, [e.target.name] : e.target.value
         })
 
+        //* Realiza validación y actualiza el estado de errores
         let objError = Validation({...input, [e.target.name] : e.target.value})
         setError(objError)
     }
     
+
+    //* Función para manejar la selección de tipos de Pokémon en el formulario.
+    //* Agrega el tipo seleccionado al estado `input.type` y realiza validación.
+ 
     function handleSelect(event){
         setInput({
             ...input, type: [...input.type, event.target.value] 
         })
+
+        //* Realiza validación y actualiza el estado de errores
         let objError = Validation({...input, [event.target.name] : event.target.value})
         setError(objError)
     }
+
+
+    //* Efecto que maneja la actualización de errores cuando no se han seleccionado tipos
 
     useEffect(() => {
         if (input.type.length === 0) {
@@ -97,12 +116,12 @@ export default function CreatePokemon() {
         }
     }, [input.type]);
 
-    // useEffect(() =>{
-    //     if(input.type.length === 0){
-    //         setError({...error, required: true, type: 'Please choose at least one type'})
-
-    //     }
-    // }, [input.type, error.required])
+   
+    //*Maneja el envío del formulario de creación de Pokémon.
+    //* Si no hay errores de validación, realiza una solicitud para crear el nuevo Pokémon,
+    //* restablece el formulario y redirige al usuario a la página de inicio.
+    //* @param {Event} e - El evento de envío del formulario.
+     
 
     function handleSubmit(e){
         if(error.required){
@@ -127,6 +146,7 @@ export default function CreatePokemon() {
         }
     }
 
+    //*Maneja la eliminación de un tipo seleccionado del estado `input.type`
     function handleDelete(option){
         setInput({
             ...input,
@@ -135,9 +155,14 @@ export default function CreatePokemon() {
     }
 
     useEffect(() =>{
+        //* Carga los tipos de Pokémon al montar el componente
         dispatch(getAllTypes())
     }, [dispatch])
 
+
+    //* Componente funcional para la creación de un nuevo Pokémon.
+   //* Muestra un formulario para ingresar información sobre un nuevo Pokémon y validar los datos ingresados.
+ 
     return(
         <div className={Styles.body}>
             
@@ -199,11 +224,11 @@ export default function CreatePokemon() {
                 </div>
 
                 <div className={Styles.div}>
-                  {input.type.map((el) => {
+                  {input.type.map((e) => {
                     return (
-                        <div className={Styles.div_types} key={el}>
-                            <h4 className={Styles.h4}>{el}</h4>
-                            <button className={Styles.x_button} onClick={() => {handleDelete(el)}}>x</button>
+                        <div className={Styles.div_types} key={e}>
+                            <h4 className={Styles.h4}>{e}</h4>
+                            <button className={Styles.x_button} onClick={() => {handleDelete(e)}}>x</button>
                         </div>
                     );
                   })}

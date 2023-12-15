@@ -1,5 +1,6 @@
 import React , {useState} from "react";
 import styled from "styled-components";
+// import './Pagination.css';
 
 
  //* Componente funcional que muestra una paginación para la lista de pokémons.
@@ -60,8 +61,11 @@ export default function Pagination({page, setPage, pokemonsPerPage}){
     //* Función que avanza a la siguiente página
 
     function nextPage(){
-        setInput (input + 1)
-        setPage (page + 1);
+        if (page < pokemonsPerPage) {
+            setInput(input + 1);
+            setPage(page + 1);
+        }
+        
     }
 
     //* Función que retrocede a la página anterior
@@ -75,20 +79,21 @@ export default function Pagination({page, setPage, pokemonsPerPage}){
     return(
        <DivStylePag>
 
-        //* Botón para retroceder a la página anterior
+        
 
             <StyledButtonsPag disabled={page === 1 || page < 1} onClick={previousPage}>⇠</StyledButtonsPag>
 
-            //* Input para mostrar el número de página actual
+            
 
             <InputPaginationPag name='page' autoComplete="off" type="text" value={input}/>
 
-            //* Texto para mostrar el rango de páginas
+            
             <p>de {pokemonsPerPage}</p>
 
-            //* Botón para avanzar a la siguiente página
+            
             
             <StyledButtonsPag disabled={page === 100 || page > 100} onClick={nextPage}>⇢</StyledButtonsPag>
         </DivStylePag>
     )
 }
+

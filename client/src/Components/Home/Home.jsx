@@ -81,7 +81,7 @@ function Home() {
         return (    
         <div className={Styles.home_container}> 
 
-        //*Renderizar la barra de navegación y la página de carga
+        
             <div>
                 <Navbar
                     allTypes={allTypes}
@@ -103,7 +103,7 @@ function Home() {
     return(
         <div className={Styles.home_container}> 
 
-        //* Renderizar la barra de navegación y la lista de Pokémon
+        
             <div>
                 <Navbar
                     allTypes={allTypes}

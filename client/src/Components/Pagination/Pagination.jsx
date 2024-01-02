@@ -1,6 +1,7 @@
 import React , {useState} from "react";
 import styled from "styled-components";
-// import './Pagination.css';
+import SearchBar from "../SearchBar/SearchBar";
+import './Pagination.css';
 
 
  //* Componente funcional que muestra una paginación para la lista de pokémons.
@@ -77,6 +78,12 @@ export default function Pagination({page, setPage, pokemonsPerPage}){
     
 
     return(
+
+        <div>
+
+            
+
+        
        <DivStylePag>
 
         
@@ -94,6 +101,13 @@ export default function Pagination({page, setPage, pokemonsPerPage}){
             
             <StyledButtonsPag disabled={page === 100 || page > 100} onClick={nextPage}>⇢</StyledButtonsPag>
         </DivStylePag>
+
+            <div className="Search">
+
+             <SearchBar setPage={setPage}/>
+
+            </div>
+
+        </div>
     )
 }
-

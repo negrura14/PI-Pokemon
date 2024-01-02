@@ -7,15 +7,15 @@ import { ROUTES } from '../../helpers/RoutesPath.js';
 
 //* Componente funcional que representa la barra de navegación superior
 
-export default function({allTypes, handleSort, handleOrderByAttack, handleOrigin, handleFilterByType}){
+export default function({allTypes, handleSort, handleOrderByAttack, handleOrigin, handleFilterByType, setPage}){
     return(
 
         <nav>
             <div className="navbar_container">
             
-                <div>
-                    <SearchBar/>
-                </div>
+                {/* <div>
+                    <SearchBar setPage={setPage}/>
+                </div> */}
             
             
                 <div>

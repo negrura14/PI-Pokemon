@@ -10,6 +10,7 @@ import NotFoundPage from './Components/NotFound/NotFoundPage'
 import About from './Components/About/About';
 
 
+
 //* Componente principal de la aplicación que define las rutas y las páginas correspondientes
  
 function App() {

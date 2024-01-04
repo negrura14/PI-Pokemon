@@ -16,10 +16,11 @@ const About = () => {
             Esta aplicación ha sido desarrollada utilizando React, Express y PostgreSQL.
             Los datos de los Pokémon se obtienen de la API oficial de Pokémon, y además, se almacenan en una base de datos propia del proyecto.
         </p>
-        <h2 className={styles.info}>Para más información y novedades, ¡sígueme en mis redes sociales!</h2>
+        <h2 className={styles.info}>Para más información y novedades, ¡Visita mis redes!</h2>
         <div className={styles.socialLinks}>
                 <a href="https://github.com/negrura14" target="_blank" rel="noopener noreferrer">GitHub</a>
                 <a href="https://www.linkedin.com/in/emanuel-nieto-230aab264" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://portfolio-delta-mocha-30.vercel.app/" target="_blank" rel="noopener noreferrer">Portfolio</a>
         </div>
         <Link to={ROUTES.HOME}><button className={styles.my_button}>Back to Home</button></Link>
     </div>
